@@ -88,7 +88,9 @@ public class IntArray implements Collection {
                 }
         }
         else{
-            int[] tempArr = new int[thisArr.length + size *2];
+            int newSize = (thisArr.length + size) *2;
+            System.out.println("newSize "+newSize);
+            int[] tempArr = new int[newSize];
             for (int i = 0; i < thisArr.length ; i++) {
                 tempArr[i] = thisArr[i];
             }
@@ -97,8 +99,8 @@ public class IntArray implements Collection {
 
             for (int i = 0; i < size ; i++)
             {
-                lastIndex++;
                 thisArr[lastIndex] = collections.get(i);
+                lastIndex++;
             }
         }
     }

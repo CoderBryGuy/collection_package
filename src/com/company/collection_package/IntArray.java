@@ -4,62 +4,76 @@ package com.company.collection_package;
  * Created by Bryan on 3/18/2016.
  */
 public class IntArray implements Collection {
-    private int[] thisArr;
+    private int[] thisArr = null;
     private int lastIndex;
 
-    IntArray(){
+    public IntArray(){
+        thisArr = null;
         thisArr = new int[10];
         lastIndex = 0;
     }
-    IntArray(int x){
+    public IntArray(int x){
+        thisArr = null;
         thisArr = new int[x];
         lastIndex = 0;
     }
     //for (int i = 0; i < thisArr.length ; i++) {      }
 
     public void add(int x){
-        if(lastIndex + 1 < thisArr.length )
+
+        if(lastIndex  < thisArr.length )
             {
-                lastIndex++;
                 thisArr[lastIndex] = x;
+                lastIndex++;
+               // System.out.println(x +"is this going nuts?");
             }
-        else if(lastIndex >= thisArr.length)
+        else
         {
-            int[] tempArr = new int[thisArr.length *2];
+            int newSize = thisArr.length *2;
+            int[] tempArr = new int[newSize];
+
             for (int i = 0; i < thisArr.length ; i++) {
                tempArr[i] = thisArr[i];
+                //System.out.println(tempArr[i]);
             }
 
-            lastIndex = thisArr.length;
+           // System.out.println(lastIndex + " last index" + " x is: " + x);
             tempArr[lastIndex] = x;
+            lastIndex++;
+            //System.out.println(x + " new value of extended array");
             thisArr = tempArr;
-            tempArr = null;
+            //tempArr = null;
         }
+
 
     }
     public void add(int x, int index){
         int temp;
-
-        if(lastIndex + 1 < thisArr.length )
+        if(lastIndex  < thisArr.length )
         {
+            temp = thisArr[index];
+            thisArr[index] = x;
+            thisArr[lastIndex] = temp;
 
             lastIndex++;
-            temp = thisArr[index];
-            thisArr[index] = x;
-            thisArr[lastIndex] = temp;
+            // System.out.println(x +"is this going nuts?");
+
         }
-        else if(lastIndex + 1 >= thisArr.length)
+        else if(lastIndex  >= thisArr.length)
         {
-            int[] tempArr = new int[thisArr.length *2];
+            int newSize = thisArr.length * 2;
+            int[] tempArr = new int[newSize];
+
             for (int i = 0; i < thisArr.length ; i++) {
                 tempArr[i] = thisArr[i];
+                //System.out.println(tempArr[i]);
             }
-            lastIndex = thisArr.length;
             thisArr = tempArr;
+            // System.out.println(lastIndex + " last index" + " x is: " + x);
             temp = thisArr[index];
             thisArr[index] = x;
             thisArr[lastIndex] = temp;
-
+            lastIndex++;
         }
     }
     public void add(Collection collections)
@@ -172,5 +186,13 @@ public class IntArray implements Collection {
             tempArr[i] = thisArr[i];
         }
         return tempArr;
+    }
+
+    public String toString(){
+        String output = "";
+        for (int i = 0; i < thisArr.length; i++) {
+            output += "value: " + thisArr[i] +" index: " + i + "\n";
+        }
+        return output;
     }
 }

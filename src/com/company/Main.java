@@ -15,11 +15,11 @@ public class Main {
          x.add(i);
             //System.out.println("adding "+ i);
         }
-        System.out.println("x \n"+x);
+        System.out.println("x lastIndex " + x.getLastIndex() + "\n"+x);
 
         IntArray y = new IntArray(10);
         for (int i = 0; i <y.size() ; i++) {
-            y.add(i+10);
+            y.add(i);
             //System.out.println("adding "+ i);
         }
         System.out.println("y \n"+y);
@@ -30,18 +30,26 @@ public class Main {
         //x.add(150,16);
         System.out.println("x after adding y \n" + x);
 
-        y.clear();
+        //y.clear();
         //System.out.println(y);
-        System.out.println(".contains() "+x.contains(9));
+        //System.out.println(".contains() "+x.contains(9));
 
-        System.out.println(".get() "+x.get(10));
+        //System.out.println(".get() "+x.get(10));
 
-        System.out.println(".indexOf() "+x.indexOf(9));
+       // System.out.println(".indexOf() "+x.indexOf(9));
 
-        System.out.println(".lastIndexOf() "+x.lastIndexOf(9));
+        //System.out.println(".lastIndexOf() "+x.lastIndexOf(9));
 
-        x.remove(19);
+        System.out.println("lastIndex "+x.getLastIndex());
+        //x.remove(19);
 
+        System.out.println(x);
+
+        IntArray z = new IntArray(0);
+        //System.out.println(".isEmpty() "+z.isEmpty());
+        //System.out.println(".isEmpty() "+x.isEmpty());
+
+        x.removeAll(5);
         System.out.println(x);
 
     }

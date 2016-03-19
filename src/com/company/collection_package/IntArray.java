@@ -6,6 +6,7 @@ package com.company.collection_package;
 public class IntArray implements Collection {
     private int[] thisArr = null;
     private int lastIndex;
+    private boolean firstIntialized = false;
 
     public IntArray(){
         thisArr = null;
@@ -23,9 +24,16 @@ public class IntArray implements Collection {
 
         if(lastIndex  < thisArr.length )
             {
-                thisArr[lastIndex] = x;
-                lastIndex++;
-               // System.out.println(x +"is this going nuts?");
+                if(firstIntialized == false)
+                {
+                    thisArr[lastIndex] = x;
+                    firstIntialized = true;
+                }
+                else {
+                    thisArr[lastIndex] = x;
+                    lastIndex++;
+                    // System.out.println(x +"is this going nuts?");
+                }
             }
         else
         {
@@ -101,6 +109,7 @@ public class IntArray implements Collection {
             {
                 thisArr[lastIndex] = collections.get(i);
                 lastIndex++;
+                System.out.println("lastIndex "+lastIndex);
             }
         }
     }
@@ -161,6 +170,7 @@ public class IntArray implements Collection {
         for (int i = 0; i < thisArr.length ; i++) {
             if(thisArr[i] == x)
                 {
+                    System.out.println("remove "+x+". lastIndex "+lastIndex);
                 thisArr[i] = thisArr[lastIndex];
                 thisArr[lastIndex] = 0;
                 lastIndex--;
@@ -197,4 +207,6 @@ public class IntArray implements Collection {
         }
         return output;
     }
+
+    public int getLastIndex(){return lastIndex;}
 }

@@ -3,6 +3,7 @@ package com.company.collection_package;
 /**
  * Created by Bryan on 3/18/2016.
  */
+//is this being updated
 public class IntArray implements Collection {
     private int[] thisArr = null;
     private int lastIndex;

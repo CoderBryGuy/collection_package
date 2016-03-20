@@ -21,11 +21,12 @@ public class IntArray implements Collection {
     }
     //for (int i = 0; i < thisArr.length ; i++) {      }
 
+    @Override
     public void add(int x){
 
         if(lastIndex  < thisArr.length )
             {
-                if(firstIntialized == false)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        if(firstIntialized == false)
                 {
                     thisArr[lastIndex] = x;
                     firstIntialized = true;
@@ -56,6 +57,7 @@ public class IntArray implements Collection {
 
 
     }
+    @Override
     public void add(int x, int index){
         int temp;
         if(lastIndex  < thisArr.length )
@@ -85,8 +87,12 @@ public class IntArray implements Collection {
             lastIndex++;
         }
     }
+    @Override
     public void add(Collection collections)
     {
+    if(collections == null)
+            return;
+
      int size = collections.size();
         if(lastIndex + size < thisArr.length)
         {
@@ -114,10 +120,14 @@ public class IntArray implements Collection {
             }
         }
     }
-
+    @Override
     public void clear(){
-        thisArr = null;
+        //thisArr = null;
+        for (int i = 0; i <thisArr.length; i++) {
+            thisArr[i]=0;
+        }
     }
+    @Override
     public boolean contains(int x){
         boolean IsValueFound = false;
         for (int i = 0; i < thisArr.length ; i++) {
@@ -126,11 +136,13 @@ public class IntArray implements Collection {
         }
         return IsValueFound;
     }
+    @Override
     public int get(int index){
         //if(index < thisArr.length)
         return thisArr[index];
     }
     //for (int i = 0; i < thisArr.length ; i++) {      }
+    @Override
     public int indexOf(int x){
         for (int i = 0; i < thisArr.length ; i++) {
             if(thisArr[i] == x)
@@ -138,6 +150,7 @@ public class IntArray implements Collection {
         }
         return -1;
     }
+    @Override
     public int lastIndexOf(int x){
         int lastIndexOf = -1;
         for (int i = 0; i < thisArr.length ; i++) {
@@ -145,6 +158,7 @@ public class IntArray implements Collection {
         }
         return lastIndexOf;
     }
+    @Override
     public boolean isEmpty(){
         if(thisArr == null)
             return true;
@@ -156,6 +170,7 @@ public class IntArray implements Collection {
         }
         return true;
     }
+    @Override
     public void remove(int x){
         for (int i = 0; i < thisArr.length ; i++) {
             if(thisArr[i] == x)
@@ -167,6 +182,7 @@ public class IntArray implements Collection {
             }
         }
     }
+    @Override
     public void removeAll(int x){
         for (int i = 0; i < thisArr.length ; i++) {
             if(thisArr[i] == x)
@@ -178,9 +194,12 @@ public class IntArray implements Collection {
                 }
         }
     }
+    @Override
     public int size(){
         return thisArr.length;
     }
+
+    @Override
     public Collection subList(int fromIndex, int toIndex){
         int tempLength = toIndex - fromIndex;
         IntArray tempArr = null;
@@ -190,9 +209,12 @@ public class IntArray implements Collection {
                 for (int i = fromIndex; i < toIndex+1 ; i++) {
                     tempArr.add(thisArr[i]);
                 }
+            return tempArr;
             }
-        return tempArr;
+        else return null;
+        
     }
+    @Override
     public int[] toArray(){
         int[] tempArr = new int[thisArr.length];
         for (int i = 0; i < thisArr.length ; i++) {
@@ -200,7 +222,7 @@ public class IntArray implements Collection {
         }
         return tempArr;
     }
-
+    @Override
     public String toString(){
         String output = "";
         for (int i = 0; i < thisArr.length; i++) {
